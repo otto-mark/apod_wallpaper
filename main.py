@@ -40,10 +40,16 @@ params = {
     'api_key' : token,
     'hd' : True,
     'thumbs': True,
+    'date' : "2022-01-01"
 }
+
+
 
 result = requests.get('https://api.nasa.gov/planetary/apod', params=params).json()
 
+copyright=""
+if "copyright" in result.keys():
+    copyright = "   " + u"\u00A9" + result["copyright"]
 
 # get image from URL; use thumbnail in case of video
 url = result["url"]
@@ -82,6 +88,7 @@ new = new.resize((sX, sY))
 if add_text:
     # fetch title and descriptive text
     des = result["explanation"]
+    des += copyright
     title = result["title"]
 
     # prepare fonts; insert line breaks into descriptive text
@@ -122,3 +129,4 @@ new.save(img_path)
 # set background
 SPI_SETDESKWALLPAPER = 20
 ctypes.windll.user32.SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0, img_path, 3)
+print(copyright)

@@ -16,3 +16,16 @@ APODwallpaper runs on Python 3.x (tested on Python 3.8). If you don't have Pytho
 
 Install the required packages running
 ```pip install -r requirements.txt```
+
+### Setup
+Open `config.py` in an editor of your choice and fill in sensible values.
+
+If you intend to use this script frequently, [please get an API key for the official APOD API from this link](https://api.nasa.gov/) and set it as your access token.
+
+## Run
+
+Run ```python main.py``` in a terminal to run the script.
+
+## Note
+
+The images retrieved by this script may be copyrighted, as displayed after the execution of the script.
